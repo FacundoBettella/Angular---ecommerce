@@ -1,0 +1,4 @@
+<img class="product-img" (error)="imgError()" (load)="imgLoaded()" [src]="imgSrc" alt="image" *ngIf="imgSrc; else elseImg" />
+<ng-template #elseImg>
+   <img [src]="imageDefault" alt="alt image" />
+</ng-template>

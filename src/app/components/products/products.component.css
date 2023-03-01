@@ -1,0 +1,24 @@
+/* Celphone */
+.products-grid {
+   display: flex;
+   flex-direction: column;
+}
+
+/* Tablet */
+@media screen and (min-width: 640px) and (max-width: 1200px) {
+   .products-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 15px;
+   }
+}
+
+/* PC */
+@media screen and (min-width: 1201px) {
+   .products-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 15px;
+   }
+}
+
