@@ -6,14 +6,14 @@ import { Component } from '@angular/core';
    styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-   imageSearcher: string = '';
+   imageSearcher = '';
 
-   imageSearcher2: string = '';
+   imageSearcher2= '';
 
-   isImg: boolean = true;
+   isImg= true;
 
    onLoaded(img: string) {
-      // console.log('Log padre=> ', img);
+      console.log('Log padre=> ', img);
    }
 
    toggleImage() {

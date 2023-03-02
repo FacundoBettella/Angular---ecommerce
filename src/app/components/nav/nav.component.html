@@ -33,11 +33,13 @@
          </ul>
       </nav>
       <div class="info">
-         <div>
+         <div class="cart">
             <a href="">
                <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
             </a>
+            <span class="counter">{{ counter }}</span>
          </div>
+         <span>{{ totalPrice | currency: "AR" }}</span>
          <div class="account"><em>facundo@facundo.com</em></div>
       </div>
    </div>

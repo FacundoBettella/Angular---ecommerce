@@ -6,9 +6,17 @@ import { Product } from '../models/product.model';
    providedIn: 'root',
 })
 export class ProductsService {
+   private apiUrl = "https://young-sands-07814.herokuapp.com/api/products";
+
    constructor(private httpClient: HttpClient) {}
 
    getAllProducts() {
-      return this.httpClient.get<Product[]>("https://fakestoreapi.com/products");
+      return this.httpClient.get<Product[]>(this.apiUrl);
+   }
+
+   getProduct(id: string) {
+      return this.httpClient.get<Product>(`${this.apiUrl}/${id}`);
    }
 }
+
+// Another practice API: return this.httpClient.get<Product[]>("https://fakestoreapi.com/products");
