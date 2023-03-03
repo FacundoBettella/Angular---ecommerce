@@ -1,5 +1,5 @@
 export interface Product {
-   id: string;
+   id?: string;
    title: string;
    description: string;
    price: number;
@@ -14,8 +14,13 @@ interface Rating {
 }
 
 interface Category {
-   id: number;
+   id?: number;
    name: string;
    typeImg?: string;
- };
+}
 
+export interface createProductDTO extends Omit<Product, 'id' | 'category'> {
+   categoryId?: number;
+}
+
+export type updateProductDTO = Partial<createProductDTO>

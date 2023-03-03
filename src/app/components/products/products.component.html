@@ -3,23 +3,28 @@
 
 <p>{{ totalPrice | currency: "AR" }}</p>
 <p>{{ myShoppingCart.length }}</p>
-<button (click)="toggleProductDetail()">Click!</button>
+
 <div class="products-grid">
-   <app-product *ngFor="let product of products" [product]="product"
+   <app-product
+      *ngFor="let product of products"
+      [product]="product"
       (addedProduct)="onAddToShoppingCart($event)"
       (showProduct)="onShowDetail($event)"
    />
+   <button (click)="loadMore()">Load more</button>
 </div>
 
+<!-- Product Detail Modal -->
 <div class="product-detail" [class.product-detail-active]="showProductDetail">
    <div *ngIf="productDetail.id !== '' ">
       <h2>{{ productDetail.title }}</h2>
       <swiper [slidesPerView]="1">
          <ng-template swiperSlide *ngFor="let productImg of productDetail.images">
-            <img [src]="productImg" alt="productImg" />
+            <img [src]="productImg" alt="productImg" width="100%"/>
          </ng-template>
       </swiper>
       <p>{{ productDetail.description }}</p>
       <button (click)="toggleProductDetail()">Close</button>
+      <button (click)="deleteProduct()">Delete!</button>
    </div>
 </div>
