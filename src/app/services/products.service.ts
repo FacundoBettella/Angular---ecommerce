@@ -6,11 +6,20 @@ import {
    updateProductDTO,
 } from '../models/product.model';
 
+/*
+   Angular reconoce automaticamente cuando es necesario utilizar environments.prod
+   para utilizarlo (por eso importamos solo el ambiente de desarrollo).
+*/
+import { environment } from '../../../src/environments/environments';
+
 @Injectable({
    providedIn: 'root',
 })
 export class ProductsService {
-   private apiUrl = 'https://young-sands-07814.herokuapp.com/api/products';
+   // proxy.config.json => Para cambiar el orgin path que recibe la API y evitar problemas de cors en modo development; asi se evita que la petición salga de localhost.
+
+   private apiUrl = `${environment.API_URL}/api/products`;
+   // Hay un proxy de desarrollo para evitar problemas de CORS
 
    constructor(private httpClient: HttpClient) {}
 

@@ -32,12 +32,13 @@ export class ProductsComponent implements OnInit {
    };
 
    showProductDetail = false;
+   statusDetail = '';
 
    limit = 10;
    offset = 0;
 
    today = new Date();
-   otherDay = new Date(2021, 2, 13);
+   // otherDay = new Date(2021, 2, 13);
 
    // Dependency Inyection
    constructor(
@@ -48,9 +49,10 @@ export class ProductsComponent implements OnInit {
    }
 
    ngOnInit(): void {
-      this.productService.getAllProducts().subscribe((data) => {
-         this.products = data;
-      });
+      // this.productService.getAllProducts().subscribe((data) => {
+      //    this.products = data;
+      // });
+      this.loadMore();
    }
 
    onAddToShoppingCart(product: Product) {
@@ -63,9 +65,18 @@ export class ProductsComponent implements OnInit {
    }
 
    onShowDetail(id: string) {
-      this.productService.getProduct(id).subscribe((data) => {
-         this.productDetail = data;
-         this.toggleProductDetail();
+      this.toggleProductDetail();
+      this.statusDetail = 'loading';
+      this.productService.getProduct(id).subscribe({
+         next: (data) => {
+
+            this.statusDetail = '';
+            this.productDetail = data;
+         },
+         error: (error) => {
+            console.error(error.message);
+            this.statusDetail = 'Product not found';
+         },
       });
    }
 
