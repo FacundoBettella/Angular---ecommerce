@@ -39,8 +39,15 @@
             </a>
             <span class="counter">{{ counter }}</span>
          </div>
-         <span>{{ totalPrice | currency: "AR" }}</span>
-         <div class="account"><em>facundo@facundo.com</em></div>
+         <div class="account">
+            <button *ngIf="!profile; else elseBlock" (click)="login()"> Login </button>
+
+            <ng-template #elseBlock>
+               <em>{{ profile?.email }}</em>
+            </ng-template>
+
+            <button (click)="createUser()">Create user</button>
+         </div>
       </div>
    </div>
 </div>

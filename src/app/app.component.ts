@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './models/user.model';
 
 @Component({
    selector: 'app-root',
@@ -8,9 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
    imageSearcher = '';
 
-   imageSearcher2= '';
+   imageSearcher2 = '';
 
-   isImg= true;
+   isImg = true;
 
    onLoaded(img: string) {
       console.log('Log padre=> ', img);

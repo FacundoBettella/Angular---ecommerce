@@ -5,6 +5,7 @@ import {
    createProductDTO,
    updateProductDTO,
 } from '../models/product.model';
+import { checkTime } from 'src/app/interceptors/time.interceptor';
 
 /*
    Angular reconoce automaticamente cuando es necesario utilizar environments.prod
@@ -30,6 +31,7 @@ export class ProductsService {
    getProductsByPage(limit: number, offset: number) {
       return this.httpClient.get<Product[]>(this.apiUrl, {
          params: { limit, offset },
+         context: checkTime()
       });
    }
 
