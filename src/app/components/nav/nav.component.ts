@@ -3,7 +3,6 @@ import { StoreService } from 'src/app/services/store.service';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../services/auth.service';
-import { UsersService } from '../../services/users.service';
 
 import { User } from 'src/app/models/user.model';
 
@@ -22,7 +21,6 @@ export class NavComponent implements OnInit, OnDestroy {
 
    constructor(
       private storeService: StoreService,
-      private userService: UsersService,
       private authService: AuthService
    ) {}
 
@@ -54,15 +52,4 @@ export class NavComponent implements OnInit, OnDestroy {
       });
    }
 
-   createUser() {
-      this.userService
-         .create({
-            name: 'Arturo',
-            email: 'Arturito@hotmail.com',
-            password: 'admin123',
-         })
-         .subscribe((data) => {
-            console.log('New user: ', data);
-         });
-   }
 }

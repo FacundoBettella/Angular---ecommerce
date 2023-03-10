@@ -1,8 +1,9 @@
-<p>Today: {{ today | date: "short"}}</p>
-<!-- <h1>{{otherDay | timeAgo}} </h1> -->
-
-<p>{{ totalPrice | currency: "AR" }}</p>
-<p>{{ myShoppingCart.length }}</p>
+<div class="products-header">
+   <p>Today: {{ today | date: "short"}}</p>
+   <!-- <h1>{{otherDay | timeAgo}} </h1> -->
+   <p>{{ totalPrice | currency: "AR" }}</p>
+   <p>Cantidad de productos en carrito: {{ myShoppingCart.length }}</p>
+</div>
 
 <div class="products-grid">
    <app-product *ngFor="let product of products" [product]="product" (addedProduct)="onAddToShoppingCart($event)"
